@@ -1,8 +1,8 @@
 {
-  "schema_version": "morrowind-korean-release-manifest-1.5",
+  "schema_version": "morrowind-korean-release-manifest-1.6",
   "version": "v01-hotfix1-easy",
   "release_date": "2026-08-03",
-  "target": "OpenMW 0.51.0 portable",
+  "target": "OpenMW 0.51.0",
   "status": "PASS",
   "supersedes": {
     "version": "v01-single-esp",
@@ -15,23 +15,29 @@
     "install_root": "OpenMW 0.51.0",
     "package_layout": [
       "OpenMW 0.51.0/openmw.cfg",
+      "OpenMW 0.51.0/SHA256SUMS.txt",
       "OpenMW 0.51.0/mods/Morrowind_Korean_ReTranslation_v01"
     ],
     "settings_cfg_replaced": false
   },
   "archive": {
     "file": "Morrowind_Korean_ReTranslation_v01_hotfix1_easy.zip",
-    "bytes": 4230726,
-    "sha256": "2d4ff0ad2839f4ea34332f136046bacc248f87e7f16be176b7c1bba9a8b6d5f9",
+    "bytes": 4235750,
+    "sha256": "0acde971a4b4399efcf2f5d78acdaa243660e0d9152f31c7a01a04a09491fac4",
     "zip_test": "PASS",
     "checksum_test": "PASS"
   },
   "openmw_cfg": {
     "file": "OpenMW 0.51.0/openmw.cfg",
-    "bytes": 9347,
-    "sha256": "e331d587a6d8d0fd59bb1d0675b94353a54afd20b83c825df8de5d2656b1e746",
-    "portable_paths": [
-      "./resources/vfs-mw",
+    "source": "user-supplied OpenMW 0.51.0 base configuration",
+    "source_bytes": 29386,
+    "source_sha256": "eefb940803c533b17a6899d951d7b3b58e9758fce9d4f8a5d42b72a9f07b772a",
+    "source_lines": 521,
+    "released_bytes": 30121,
+    "released_sha256": "7dac219722ef79a7a135e61370bdb58b7fc4fae2409f693797e52c855f6a6893",
+    "released_lines": 529,
+    "preserved_base_configuration": true,
+    "added_data_directories": [
       "./mods/Morrowind_Korean_ReTranslation_v01"
     ],
     "content_files": 4,
