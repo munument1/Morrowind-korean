@@ -1,36 +1,42 @@
-# 모로윈드 한국어 재번역 v01 — 단일 ESP 배포본
+# 모로윈드 한국어 재번역 v01 핫픽스 1
 
-본문·이름·추가 표시·스크립트·실내 지명을 `Morrowind_Korean_ReTranslation_v01.esp` 하나에 통합한 OpenMW 0.51용 배포본입니다.
+## 긴급 수정 내용
 
-## 배포 방식
+이전 단일 ESP 배포본은 폐기되었습니다. 실내 지명 패치를 통합하는 과정에서 원본 ESM의 `CELL` 내부 참조 번호가 새 플러그인의 로컬 참조로 잘못 해석됐습니다. 그 결과 시작 구역의 경비병과 캐릭터 생성 오브젝트가 복제되어 다음 증상이 발생할 수 있었습니다.
 
-- Google Drive에는 배포하지 않습니다.
-- 자동 설치 프로그램을 포함하지 않습니다.
-- 압축을 풀어 나온 `Morrowind_Korean_ReTranslation_v01` 폴더를 OpenMW의 `mods` 폴더 안에 통째로 넣습니다.
-- 원본 모로윈드의 `Data Files` 폴더에는 덮어쓰지 않습니다.
-- OpenMW Launcher에서 해당 폴더를 데이터 디렉터리로 추가하고 통합 ESP 하나만 활성화합니다.
+- 배에서 내린 뒤 경비병이 두 명 나타남
+- 인구조사 및 세무국의 정상 진행 전에 직업 선택 장면이 실행됨
+- 다른 실내·외 구역에서도 NPC나 오브젝트가 중복될 가능성
+
+핫픽스 1은 문제가 있는 실내 지명 변경을 제거하고, 검증된 게임 본문·이름·추가 표시·스크립트 번역 ESP로 되돌렸습니다.
 
 ## 배포 파일
 
-- 파일명: `Morrowind_Korean_ReTranslation_v01.zip`
-- 크기: 10,499,720바이트
-- SHA-256: `163e9c05ea19d33fe274351890a0905228800213b4da1a4f9381af828c79e90f`
+- 파일명: `Morrowind_Korean_ReTranslation_v01_hotfix1.zip`
+- 크기: 4,230,960바이트
+- SHA-256: `2a4eb6d7406e4dc58aea84f89b0f65ae1305a9698cb4fea1a5ded66d9eef556e`
 - ZIP 검사: PASS
+- Google Drive 배포: 사용하지 않음
 
-## 통합 ESP
+## ESP
 
 - 파일명: `Morrowind_Korean_ReTranslation_v01.esp`
-- 크기: 42,704,861바이트
-- SHA-256: `a5a95f64afde810c3f6ec99af416a3c8d055c4c021883722fc020042d6877562`
-- 마스터: `Morrowind.esm`, `Tribunal.esm`, `Bloodmoon.esm`
+- 크기: 18,184,467바이트
+- SHA-256: `52f973e173c037a1010a4fb91aec45a3946db6390c7e516eab96a9be629bc715`
+- 전체 레코드: 45,956개
+- `chargen` 참조가 포함된 `CELL` 레코드: 0개
+- 번역 행: 45,881개 검증
+- 스크립트 문자열: 3,714개 검증
 
-## 검증 결과
+## 임시 제외
 
-- 최종 검수 번역 51,440행 반영
-- ESP 번역 45,881행 PASS
-- 스크립트 문자열 3,714개 PASS
-- 실내 지명 1,328개 PASS
-- 이전 두 ESP의 유효 레코드 상태와 동일함을 확인
-- OpenMW UI 456개, fallback 63개, 폰트 패치 PASS
+- 실내 지명 1,328개
 
-이전 `Morrowind_Korean_Interior_CellNames_v01.esp`는 더 이상 사용하지 않습니다.
+실내 지명은 원본 ESM별 마스터 인덱스를 올바르게 재매핑하고 실제 시작 구간 시험을 통과한 뒤 복원합니다.
+
+## 기존 사용자
+
+1. 기존 `OpenMW\mods\Morrowind_Korean_ReTranslation_v01` 폴더를 제거합니다.
+2. 핫픽스를 같은 위치에 새로 풉니다.
+3. `Morrowind_Korean_Interior_CellNames_v01.esp`가 남아 있다면 비활성화하고 삭제합니다.
+4. 문제 있는 ESP로 이미 시작 장면을 진행했다면 캐릭터 생성 전 저장 파일을 불러오거나 새 게임을 시작하는 것이 안전합니다.
