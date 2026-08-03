@@ -1,9 +1,14 @@
 {
-  "schema_version": "morrowind-korean-release-manifest-1.3",
-  "version": "v01-single-esp",
+  "schema_version": "morrowind-korean-release-manifest-1.4",
+  "version": "v01-hotfix1",
   "release_date": "2026-08-03",
   "target": "OpenMW 0.51.x",
   "status": "PASS",
+  "supersedes": {
+    "version": "v01-single-esp",
+    "status": "BROKEN_RETIRED",
+    "reason": "Interior CELL records retained source-local FRMR indices, cloning NPC and chargen references."
+  },
   "distribution": {
     "method": "openmw-mod-folder",
     "google_drive": false,
@@ -18,25 +23,25 @@
     ]
   },
   "archive": {
-    "file": "Morrowind_Korean_ReTranslation_v01.zip",
-    "bytes": 10499720,
-    "sha256": "163e9c05ea19d33fe274351890a0905228800213b4da1a4f9381af828c79e90f",
-    "zip_test": "PASS"
+    "file": "Morrowind_Korean_ReTranslation_v01_hotfix1.zip",
+    "bytes": 4230960,
+    "sha256": "2a4eb6d7406e4dc58aea84f89b0f65ae1305a9698cb4fea1a5ded66d9eef556e",
+    "zip_test": "PASS",
+    "checksum_test": "PASS"
   },
   "plugin": {
     "file": "Morrowind_Korean_ReTranslation_v01.esp",
-    "bytes": 42704861,
-    "sha256": "a5a95f64afde810c3f6ec99af416a3c8d055c4c021883722fc020042d6877562",
-    "masters": [
-      "Morrowind.esm",
-      "Tribunal.esm",
-      "Bloodmoon.esm"
-    ],
-    "record_count": 50892,
+    "bytes": 18184467,
+    "sha256": "52f973e173c037a1010a4fb91aec45a3946db6390c7e516eab96a9be629bc715",
+    "record_count": 45956,
     "verified_translation_rows": 45881,
     "verified_script_strings": 3714,
-    "verified_interior_cell_ids": 1328,
-    "effective_state_equivalent_to_former_two_esp_release": true
+    "cell_records_with_chargen_payload": 0,
+    "interior_cell_translation_included": false
+  },
+  "temporarily_excluded": {
+    "interior_cell_ids": 1328,
+    "reason": "Removed until FRMR/master-index remapping and in-game start-sequence validation are complete."
   },
   "retired_plugin": "Morrowind_Korean_Interior_CellNames_v01.esp",
   "openmw_ui": {
@@ -47,6 +52,7 @@
   },
   "review": {
     "completed_rows": 51440,
-    "status": "PASS"
+    "status": "COMPLETE",
+    "released_in_hotfix": "All reviewed content except 1,328 interior-cell names"
   }
 }
