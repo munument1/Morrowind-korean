@@ -8,29 +8,26 @@
 - Changed translations applied: 본문 422; 이름 219; 추가 표시 403; 스크립트 2,781; 실내 지명 652; OpenMW UI 289
 - Restored YAML keys affected by YAML 1.1 boolean parsing: `No`, `Off`, `On`, `Yes`
 
-## Main ESP
+## Integrated single ESP
 
 - Status: PASS
 - File: `Morrowind_Korean_ReTranslation_v01.esp`
-- Bytes: 18,184,467
-- SHA-256: `52f973e173c037a1010a4fb91aec45a3946db6390c7e516eab96a9be629bc715`
-- Records: 45,955
+- Bytes: 42,704,861
+- SHA-256: `a5a95f64afde810c3f6ec99af416a3c8d055c4c021883722fc020042d6877562`
+- Masters: `Morrowind.esm`, `Tribunal.esm`, `Bloodmoon.esm`
+- Records: 50,892
 - Expected and verified translation rows: 45,881
 - Missing rows: 0
 - Text mismatches: 0
 - SCPT rows: 900 / 900
 - INFO script rows: 2,814 / 2,814
-
-## Interior-cell ESP
-
-- Status: PASS
-- File: `Morrowind_Korean_Interior_CellNames_v01.esp`
-- Bytes: 24,520,894
-- SHA-256: `08c67a948bc7e4c0318c2ce52e1b93ebe910571d3ea04aa4b9edf007a83a436f`
-- Mapped cell IDs: 1,328 / 1,328
+- Interior cell IDs: 1,328 / 1,328
 - Renamed cell record occurrences: 1,340
 - Renamed pathgrid records: 1,238
 - Residual exact or quoted English references: 0
+- Exact component record bytes preserved: PASS
+- Effective record state equal to former two-ESP load sequence: PASS
+- INFO records without a DIAL parent group: 0
 
 ## OpenMW assets
 
@@ -50,4 +47,4 @@ Run from the extracted package root:
 .\tools\Verify-Package.ps1
 ```
 
-The verifier checks every file listed in `SHA256SUMS.txt`, both ESP hashes, eight l10n domains, the 456-key aggregate, the four quoted Interface boolean keys, and the 63 runtime fallback lines.
+The verifier checks every file listed in `SHA256SUMS.txt`, the integrated ESP hash, absence of the retired interior ESP, eight l10n domains, the 456-key aggregate, the four quoted Interface boolean keys, and the 63 runtime fallback lines.
