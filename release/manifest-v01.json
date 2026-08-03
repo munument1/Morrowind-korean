@@ -10,14 +10,14 @@
     "package_layout": [
       "README.md",
       "Data Files",
-      "OpenMW 설정",
+      "OpenMW Config",
       "SHA256SUMS.txt"
     ]
   },
   "archive": {
     "file": "Morrowind_Korean_ReTranslation_v01.zip",
-    "bytes": 10653140,
-    "sha256": "9ad0e181f02e3e996b09e4363f4ba1aa4efdf0c11a6bfca5ebbe0cd328390bec",
+    "bytes": 10653085,
+    "sha256": "361e432ff7615609d7f1001950673420b2671537517dc8725d397ac3eb4fda46",
     "zip_test": "PASS"
   },
   "plugin": {
