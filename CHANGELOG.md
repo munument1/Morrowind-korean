@@ -8,7 +8,8 @@
 - 통합 ESP의 마스터 목록을 `Morrowind.esm`, `Tribunal.esm`, `Bloodmoon.esm`으로 정리했습니다.
 - Google Drive 배포 링크를 제거했습니다.
 - 자동 설치·검증 PowerShell 스크립트를 제거했습니다.
-- 배포 ZIP을 `Data Files` 폴더 병합·덮어쓰기 방식으로 단순화했습니다.
+- 배포 ZIP을 OpenMW의 `mods` 폴더에 통째로 넣는 구조로 변경했습니다.
+- 원본 모로윈드 `Data Files` 폴더에 덮어쓴다는 잘못된 안내를 제거했습니다.
 - 기본 `README.md`를 한국어로 변경하고 중복 `README_KO.md`를 제거했습니다.
 
 ## v01 — 2026-08-03
