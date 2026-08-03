@@ -1,0 +1,42 @@
+{
+  "schema_version": "morrowind-korean-release-manifest-1.0",
+  "version": "v01",
+  "release_date": "2026-08-03",
+  "target": "OpenMW 0.51.x",
+  "status": "PASS",
+  "archive": {
+    "file": "Morrowind_Korean_ReTranslation_v01_OpenMW_0.51.zip",
+    "bytes": 10518356,
+    "sha256": "6a538e3eeef74a6b4d7c1aa9a193a9bc44803f1d914a7b5d88041faa11d952fb",
+    "google_drive_url": "https://drive.google.com/file/d/1fSaNBgao9cFF37Tw0gLsU8UF8-sUk-Q_/view?usp=drivesdk",
+    "google_drive_folder_url": "https://drive.google.com/drive/folders/1pKjVx75OYFycEO0NmpmZbIjlADDITCKc",
+    "roundtrip_sha256_verified": true
+  },
+  "main_esp": {
+    "file": "Morrowind_Korean_ReTranslation_v01.esp",
+    "bytes": 18184467,
+    "sha256": "52f973e173c037a1010a4fb91aec45a3946db6390c7e516eab96a9be629bc715",
+    "verified_rows": 45881
+  },
+  "interior_esp": {
+    "file": "Morrowind_Korean_Interior_CellNames_v01.esp",
+    "bytes": 24520894,
+    "sha256": "08c67a948bc7e4c0318c2ce52e1b93ebe910571d3ea04aa4b9edf007a83a436f",
+    "verified_cell_ids": 1328
+  },
+  "openmw_ui": {
+    "domains": 8,
+    "keys": 456,
+    "fallback_strings": 63,
+    "font_patch": "PASS"
+  },
+  "review": {
+    "completed_rows": 51440,
+    "status": "PASS"
+  },
+  "package_validation": {
+    "status": "PASS",
+    "zip_test": "PASS",
+    "sha256sum_check": "PASS"
+  }
+}
