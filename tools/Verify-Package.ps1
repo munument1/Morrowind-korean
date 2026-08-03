@@ -15,10 +15,13 @@ foreach ($Line in Get-Content -LiteralPath $SumFile -Encoding UTF8) {
     if ($Actual -ne $Expected) { $Failures.Add("해시 불일치: $Relative") }
 }
 
-$Main = (Get-FileHash -LiteralPath (Join-Path $Root 'Morrowind_Korean_ReTranslation_v01.esp') -Algorithm SHA256).Hash.ToLowerInvariant()
-$Interior = (Get-FileHash -LiteralPath (Join-Path $Root 'Morrowind_Korean_Interior_CellNames_v01.esp') -Algorithm SHA256).Hash.ToLowerInvariant()
-if ($Main -ne '52f973e173c037a1010a4fb91aec45a3946db6390c7e516eab96a9be629bc715') { $Failures.Add('본편 ESP 기준 해시 불일치') }
-if ($Interior -ne '08c67a948bc7e4c0318c2ce52e1b93ebe910571d3ea04aa4b9edf007a83a436f') { $Failures.Add('실내 지명 ESP 기준 해시 불일치') }
+$PluginPath = Join-Path $Root 'Morrowind_Korean_ReTranslation_v01.esp'
+$Plugin = (Get-FileHash -LiteralPath $PluginPath -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($Plugin -ne 'a5a95f64afde810c3f6ec99af416a3c8d055c4c021883722fc020042d6877562') { $Failures.Add('통합 ESP 기준 해시 불일치') }
+if ((Get-Item -LiteralPath $PluginPath).Length -ne 42704861) { $Failures.Add('통합 ESP 파일 크기 불일치') }
+if (Test-Path -LiteralPath (Join-Path $Root 'Morrowind_Korean_Interior_CellNames_v01.esp')) {
+    $Failures.Add('폐기된 실내 지명 보조 ESP가 패키지에 남아 있음')
+}
 
 $Yaml = @(Get-ChildItem -LiteralPath (Join-Path $Root 'l10n') -Filter 'ko.yaml' -File -Recurse)
 if ($Yaml.Count -ne 8) { $Failures.Add("l10n 도메인 수 불일치: $($Yaml.Count)") }
@@ -44,5 +47,5 @@ if ($Failures.Count -gt 0) {
     foreach ($Failure in $Failures) { Write-Host "FAIL: $Failure" -ForegroundColor Red }
     exit 1
 }
-Write-Host 'PASS: 패키지 해시와 핵심 구조가 모두 일치합니다.' -ForegroundColor Green
-Write-Host "OpenMW UI 키: $KeyCount / fallback 문자열: $FallbackCount / l10n 도메인: $($Yaml.Count)"
+Write-Host 'PASS: 단일 ESP 패키지 해시와 핵심 구조가 모두 일치합니다.' -ForegroundColor Green
+Write-Host "ESP: 42704861바이트 / OpenMW UI 키: $KeyCount / fallback 문자열: $FallbackCount / l10n 도메인: $($Yaml.Count)"
