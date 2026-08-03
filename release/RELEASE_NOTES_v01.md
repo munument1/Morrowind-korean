@@ -6,14 +6,15 @@
 
 - Google Drive에는 배포하지 않습니다.
 - 자동 설치 프로그램을 포함하지 않습니다.
-- 압축 안의 `Data Files` 폴더를 기존 모로윈드 `Data Files` 폴더에 병합·덮어쓰기합니다.
-- OpenMW Launcher에서 통합 ESP 하나만 활성화합니다.
+- 압축을 풀어 나온 `Morrowind_Korean_ReTranslation_v01` 폴더를 OpenMW의 `mods` 폴더 안에 통째로 넣습니다.
+- 원본 모로윈드의 `Data Files` 폴더에는 덮어쓰지 않습니다.
+- OpenMW Launcher에서 해당 폴더를 데이터 디렉터리로 추가하고 통합 ESP 하나만 활성화합니다.
 
 ## 배포 파일
 
 - 파일명: `Morrowind_Korean_ReTranslation_v01.zip`
-- 크기: 10,653,085바이트
-- SHA-256: `361e432ff7615609d7f1001950673420b2671537517dc8725d397ac3eb4fda46`
+- 크기: 10,499,720바이트
+- SHA-256: `163e9c05ea19d33fe274351890a0905228800213b4da1a4f9381af828c79e90f`
 - ZIP 검사: PASS
 
 ## 통합 ESP
