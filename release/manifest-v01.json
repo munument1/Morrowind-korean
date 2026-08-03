@@ -1,8 +1,8 @@
 {
-  "schema_version": "morrowind-korean-release-manifest-1.4",
-  "version": "v01-hotfix1",
+  "schema_version": "morrowind-korean-release-manifest-1.5",
+  "version": "v01-hotfix1-easy",
   "release_date": "2026-08-03",
-  "target": "OpenMW 0.51.x",
+  "target": "OpenMW 0.51.0 portable",
   "status": "PASS",
   "supersedes": {
     "version": "v01-single-esp",
@@ -10,24 +10,33 @@
     "reason": "Interior CELL records retained source-local FRMR indices, cloning NPC and chargen references."
   },
   "distribution": {
-    "method": "openmw-mod-folder",
+    "method": "openmw-root-folder-overwrite",
     "google_drive": false,
-    "install_root": "OpenMW/mods/Morrowind_Korean_ReTranslation_v01",
+    "install_root": "OpenMW 0.51.0",
     "package_layout": [
-      "Morrowind_Korean_ReTranslation_v01.esp",
-      "Fonts",
-      "l10n",
-      "OpenMW Config",
-      "README.md",
-      "SHA256SUMS.txt"
-    ]
+      "OpenMW 0.51.0/openmw.cfg",
+      "OpenMW 0.51.0/mods/Morrowind_Korean_ReTranslation_v01"
+    ],
+    "settings_cfg_replaced": false
   },
   "archive": {
-    "file": "Morrowind_Korean_ReTranslation_v01_hotfix1.zip",
-    "bytes": 4230960,
-    "sha256": "2a4eb6d7406e4dc58aea84f89b0f65ae1305a9698cb4fea1a5ded66d9eef556e",
+    "file": "Morrowind_Korean_ReTranslation_v01_hotfix1_easy.zip",
+    "bytes": 4230726,
+    "sha256": "2d4ff0ad2839f4ea34332f136046bacc248f87e7f16be176b7c1bba9a8b6d5f9",
     "zip_test": "PASS",
     "checksum_test": "PASS"
+  },
+  "openmw_cfg": {
+    "file": "OpenMW 0.51.0/openmw.cfg",
+    "bytes": 9347,
+    "sha256": "e331d587a6d8d0fd59bb1d0675b94353a54afd20b83c825df8de5d2656b1e746",
+    "portable_paths": [
+      "./resources/vfs-mw",
+      "./mods/Morrowind_Korean_ReTranslation_v01"
+    ],
+    "content_files": 4,
+    "translated_fallback_strings": 63,
+    "font_fallbacks": 3
   },
   "plugin": {
     "file": "Morrowind_Korean_ReTranslation_v01.esp",
@@ -43,16 +52,10 @@
     "interior_cell_ids": 1328,
     "reason": "Removed until FRMR/master-index remapping and in-game start-sequence validation are complete."
   },
-  "retired_plugin": "Morrowind_Korean_Interior_CellNames_v01.esp",
   "openmw_ui": {
     "domains": 8,
     "keys": 456,
     "fallback_strings": 63,
     "font_patch": "PASS"
-  },
-  "review": {
-    "completed_rows": 51440,
-    "status": "COMPLETE",
-    "released_in_hotfix": "All reviewed content except 1,328 interior-cell names"
   }
 }
