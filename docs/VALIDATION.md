@@ -4,7 +4,7 @@
 
 - 상태: PASS
 - 이전 단일 통합 ESP: `BROKEN_RETIRED`
-- 확인된 오류: 실내 지명 패치의 `CELL` 내부 `FRMR` 참조 번호가 재매핑되지 않아 NPC와 캐릭터 생성 오브젝트가 복제됨
+- 확인된 오류: 실내 지명 패치의 `CELL` 내부 `FRMR` 참조 번호가 원본 ESM 마스터 인덱스로 재매핑되지 않아 NPC와 캐릭터 생성 오브젝트가 복제됨
 - 관찰 증상: 시작 부두 경비병 중복, 인구조사 절차 전 직업 선택 장면 실행
 
 ## 핫픽스 ESP
@@ -13,48 +13,60 @@
 - 크기: 18,184,467바이트
 - SHA-256: `52f973e173c037a1010a4fb91aec45a3946db6390c7e516eab96a9be629bc715`
 - 전체 레코드: 45,956개
-- 번역 행: 45,881 / 45,881
-- 검증된 스크립트 문자열: 3,714개
+- `CELL` 레코드: 126개
 - `chargen` 문자열이 포함된 `CELL` 레코드: 0개
+- 번역 행: 45,881 / 45,881
+- 누락: 0
+- 텍스트 불일치: 0
+- 검증된 스크립트 문자열: 3,714개
 
 ## 실내 지명
 
 - 검수 완료: 1,328개
 - 핫픽스 포함: 0개
 - 상태: 임시 제외
+- 제외 이유: 기존 빌드가 전체 `CELL` 레코드를 복사하면서 참조 번호를 로컬 신규 참조로 만들었음
 - 복원 조건: 원본 ESM별 `FRMR` 마스터 인덱스 재매핑, 중복 참조 검사, 시작 구간 실제 게임 시험
+
+## openmw.cfg
+
+- 기반 파일: 사용자가 제공한 OpenMW 0.51.0 기본 `openmw.cfg`
+- 기반 파일 크기: 29,386바이트
+- 기반 파일 줄 수: 521줄
+- 기반 파일 SHA-256: `eefb940803c533b17a6899d951d7b3b58e9758fce9d4f8a5d42b72a9f07b772a`
+- 배포 수정본 크기: 30,121바이트
+- 배포 수정본 줄 수: 529줄
+- 배포 수정본 SHA-256: `7dac219722ef79a7a135e61370bdb58b7fc4fae2409f693797e52c855f6a6893`
+- 원본 설정 보존: PASS
+- 한국어 모드 데이터 경로: 1개
+- `encoding=win1252`: 1개
+- 콘텐츠 로드 항목: 4개
+- 폰트 교체 항목: 3개
+- 한국어 fallback 교체 항목: 63개
+- 중복 패키지 지시문: 0개
 
 ## OpenMW 자산
 
+- 상태: PASS
 - l10n 영역: 8개
 - 네이티브 UI 키: 456개
-- 번역 fallback 문자열: 63개
-- 폰트 fallback: 3개
+- fallback 문자열: 63개
+- Interface 키: No=아니요; Off=끔; On=켬; Yes=예
 - 폰트 패치: PASS
 
 ## 간편 설치 ZIP
 
 - 파일: `Morrowind_Korean_ReTranslation_v01_hotfix1_easy.zip`
-- 크기: 4,230,726바이트
-- SHA-256: `2d4ff0ad2839f4ea34332f136046bacc248f87e7f16be176b7c1bba9a8b6d5f9`
+- 크기: 4,235,750바이트
+- SHA-256: `0acde971a4b4399efcf2f5d78acdaa243660e0d9152f31c7a01a04a09491fac4`
+- ZIP 파일 수: 18개
 - ZIP 무결성 검사: PASS
+- 내부 SHA256SUMS 검사: PASS
+- 최상위 폴더: `OpenMW 0.51.0` 하나
+- 구형 `OpenMW Config` 폴더: 없음
 - 설치 방식: `OpenMW 0.51.0` 폴더 전체 덮어쓰기
 - Google Drive 배포: 사용하지 않음
 
-## 동봉 openmw.cfg
-
-- 파일: `OpenMW 0.51.0/openmw.cfg`
-- 크기: 9,347바이트
-- SHA-256: `e331d587a6d8d0fd59bb1d0675b94353a54afd20b83c825df8de5d2656b1e746`
-- `resources=./resources`: 1개
-- 데이터 경로: `./resources/vfs-mw`, `./mods/Morrowind_Korean_ReTranslation_v01`
-- 콘텐츠: 공식 ESM 3개 + 한국어 ESP 1개
-- BSA: Morrowind, Tribunal, Bloodmoon
-- `encoding=win1252`: 1개
-- 번역 fallback: 63개
-- SmallBatang4 폰트 fallback: 3개
-- `settings.cfg` 덮어쓰기: 없음
-
 ## 제한 사항
 
-현재 작업 환경에는 OpenMW 실행 파일이 없어 실제 게임 실행 시험은 수행하지 못했습니다. 문제가 발생한 `CELL` 참조가 핫픽스 ESP에 포함되지 않았는지는 구조적으로 검사했습니다.
+현재 작업 환경에는 OpenMW 실행 파일이 없어 실제 게임 실행 시험은 수행하지 못했습니다. 대신 문제가 발생한 `CELL` 참조가 핫픽스 ESP에 포함되지 않았는지 구조적으로 검사했으며, 시작 이벤트 관련 `chargen` 참조가 포함된 `CELL` 레코드는 0개입니다.
