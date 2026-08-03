@@ -12,8 +12,8 @@
 ## 배포 파일
 
 - 파일명: `Morrowind_Korean_ReTranslation_v01.zip`
-- 크기: 10,653,140바이트
-- SHA-256: `9ad0e181f02e3e996b09e4363f4ba1aa4efdf0c11a6bfca5ebbe0cd328390bec`
+- 크기: 10,653,085바이트
+- SHA-256: `361e432ff7615609d7f1001950673420b2671537517dc8725d397ac3eb4fda46`
 - ZIP 검사: PASS
 
 ## 통합 ESP
