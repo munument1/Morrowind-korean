@@ -6,15 +6,36 @@ OpenMW 0.51용 모로윈드 본편·Tribunal·Bloodmoon 한국어 재번역입�
 ## 배포 파일
 
 - 파일명: `Morrowind_Korean_ReTranslation_v01.zip`
-- 크기: 10,653,085바이트
-- SHA-256: `361e432ff7615609d7f1001950673420b2671537517dc8725d397ac3eb4fda46`
+- 크기: 10,499,720바이트
+- SHA-256: `163e9c05ea19d33fe274351890a0905228800213b4da1a4f9381af828c79e90f`
 - Google Drive에는 배포하지 않습니다.
 
 ## 설치
 
 1. OpenMW를 종료합니다.
-2. 압축 안의 `Data Files` 폴더를 모로윈드 설치 폴더에 복사하여 기존 `Data Files` 폴더와 **병합·덮어쓰기**합니다.
-3. OpenMW Launcher의 `Data Files`에서 다음 순서로 활성화합니다.
+2. 압축을 풉니다.
+3. 압축을 풀어 나온 `Morrowind_Korean_ReTranslation_v01` 폴더를 **OpenMW의 `mods` 폴더 안에 통째로 넣습니다.**
+
+```text
+OpenMW
+└─ mods
+   └─ Morrowind_Korean_ReTranslation_v01
+      ├─ Morrowind_Korean_ReTranslation_v01.esp
+      ├─ Fonts
+      ├─ l10n
+      ├─ OpenMW Config
+      └─ README.md
+```
+
+원본 모로윈드의 `Data Files` 폴더에는 덮어쓰지 마십시오.
+
+4. OpenMW Launcher에서 `Data Files` → `Data Directories`를 열고 아래 폴더를 데이터 디렉터리로 추가합니다.
+
+```text
+OpenMW\mods\Morrowind_Korean_ReTranslation_v01
+```
+
+5. 다음 순서로 플러그인을 활성화합니다.
 
 ```text
 Morrowind.esm
