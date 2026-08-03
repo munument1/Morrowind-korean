@@ -1,7 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$OpenMWConfigDir = (Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'My Games\OpenMW'),
-    [switch]$SkipInteriorCellNames
+    [string]$OpenMWConfigDir = (Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'My Games\OpenMW')
 )
 
 $ErrorActionPreference = 'Stop'
@@ -13,7 +12,6 @@ if ($PackageRoot.ToCharArray() | Where-Object { [int]$_ -gt 127 }) {
 
 $Required = @(
     'Morrowind_Korean_ReTranslation_v01.esp',
-    'Morrowind_Korean_Interior_CellNames_v01.esp',
     'config\openmw_fallbacks_ko_runtime.cfg',
     'Fonts\SmallBatang4.fnt',
     'Fonts\SmallBatang4.tex',
@@ -37,8 +35,6 @@ if (Test-Path -LiteralPath $SettingsCfg) {
     Copy-Item -LiteralPath $SettingsCfg -Destination "$SettingsCfg.korean-v01.$Stamp.bak" -Force
 }
 
-# ISO-8859-1 is used only as a byte-preserving one-to-one transport.
-# This keeps existing raw fallback bytes intact while the package's runtime strings remain Windows-1252 bytes.
 $BytePreserving = [Text.Encoding]::GetEncoding(28591)
 $CfgText = $BytePreserving.GetString([IO.File]::ReadAllBytes($OpenMWCfg))
 $Lines = [Collections.Generic.List[string]]::new()
@@ -50,7 +46,7 @@ foreach ($Line in ($CfgText -split "`r?`n")) {
 $PackageData = $PackageRoot.Replace('\','/')
 $DataLine = 'data="' + $PackageData + '"'
 $MainContent = 'content=Morrowind_Korean_ReTranslation_v01.esp'
-$InteriorContent = 'content=Morrowind_Korean_Interior_CellNames_v01.esp'
+$RetiredInteriorContent = 'content=Morrowind_Korean_Interior_CellNames_v01.esp'
 $FontKeys = @('Fonts_Font_0','Fonts_Font_1','Fonts_Font_2')
 
 $RuntimePath = Join-Path $PackageRoot 'config\openmw_fallbacks_ko_runtime.cfg'
@@ -66,7 +62,7 @@ $Filtered = [Collections.Generic.List[string]]::new()
 foreach ($Line in $Lines) {
     $Drop = $false
     if ($Line -match '^encoding=') { $Drop = $true }
-    elseif ($Line -eq $DataLine -or $Line -eq $MainContent -or $Line -eq $InteriorContent) { $Drop = $true }
+    elseif ($Line -eq $DataLine -or $Line -eq $MainContent -or $Line -eq $RetiredInteriorContent) { $Drop = $true }
     elseif ($Line -match '^fallback=([^,]+),') {
         $Key = $Matches[1]
         if ($RuntimeKeys.ContainsKey($Key) -or $FontKeys -contains $Key) { $Drop = $true }
@@ -75,11 +71,10 @@ foreach ($Line in $Lines) {
 }
 
 $Filtered.Add('')
-$Filtered.Add('# Morrowind Korean ReTranslation v01')
+$Filtered.Add('# Morrowind Korean ReTranslation v01 - integrated single ESP')
 $Filtered.Add('encoding=win1252')
 $Filtered.Add($DataLine)
 $Filtered.Add($MainContent)
-if (-not $SkipInteriorCellNames) { $Filtered.Add($InteriorContent) }
 $Filtered.Add('fallback=Fonts_Font_0,SmallBatang4')
 $Filtered.Add('fallback=Fonts_Font_1,SmallBatang4')
 $Filtered.Add('fallback=Fonts_Font_2,SmallBatang4')
@@ -119,8 +114,8 @@ function Set-IniValue {
 
 Set-IniValue -Path $SettingsCfg -Section 'General' -Key 'preferred locales' -Value 'ko,en'
 
-Write-Host 'PASS: OpenMW 한국어 재번역 v01 설정을 적용했습니다.' -ForegroundColor Green
+Write-Host 'PASS: 단일 ESP OpenMW 한국어 재번역 v01 설정을 적용했습니다.' -ForegroundColor Green
 Write-Host "설정 디렉터리: $OpenMWConfigDir"
 Write-Host "데이터 디렉터리: $PackageRoot"
 Write-Host "백업: $OpenMWCfg.korean-v01.$Stamp.bak"
-Write-Host 'OpenMW Launcher를 열어 플러그인 순서를 확인한 뒤 실행하십시오.'
+Write-Host '이전 Morrowind_Korean_Interior_CellNames_v01.esp 항목은 제거되었습니다.'
