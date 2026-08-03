@@ -1,11 +1,27 @@
 {
-  "schema_version": "morrowind-korean-release-manifest-1.1",
+  "schema_version": "morrowind-korean-release-manifest-1.2",
   "version": "v01-single-esp",
   "release_date": "2026-08-03",
   "target": "OpenMW 0.51.x",
   "status": "PASS",
+  "distribution": {
+    "method": "manual-folder-merge",
+    "google_drive": false,
+    "package_layout": [
+      "README.md",
+      "Data Files",
+      "OpenMW 설정",
+      "SHA256SUMS.txt"
+    ]
+  },
+  "archive": {
+    "file": "Morrowind_Korean_ReTranslation_v01.zip",
+    "bytes": 10653140,
+    "sha256": "9ad0e181f02e3e996b09e4363f4ba1aa4efdf0c11a6bfca5ebbe0cd328390bec",
+    "zip_test": "PASS"
+  },
   "plugin": {
-    "file": "Morrowind_Korean_ReTranslation_v01.esp",
+    "file": "Data Files/Morrowind_Korean_ReTranslation_v01.esp",
     "bytes": 42704861,
     "sha256": "a5a95f64afde810c3f6ec99af416a3c8d055c4c021883722fc020042d6877562",
     "masters": [
@@ -29,13 +45,5 @@
   "review": {
     "completed_rows": 51440,
     "status": "PASS"
-  },
-  "archive": {
-    "file": "Morrowind_Korean_ReTranslation_v01_OpenMW_0.51.zip",
-    "bytes": 10493072,
-    "sha256": "dba29cc250df3925d6b4efd6c34cc71d4eb68a9d96bc242524ffefde773cf2f7",
-    "google_drive_url": "https://drive.google.com/file/d/1AWCS8z6SoMtrq4lRyXQ5y7qS4SDiuJkw/view?usp=drivesdk",
-    "roundtrip_sha256_verified": true,
-    "google_drive_folder_url": "https://drive.google.com/drive/folders/1fNH3RfXaiqLm7RG-zmMjkd_d6XXX5mRY"
   }
 }
