@@ -42,9 +42,10 @@
 ## 단순 배포 ZIP
 
 - 파일: `Morrowind_Korean_ReTranslation_v01.zip`
-- 크기: 10,653,140바이트
-- SHA-256: `9ad0e181f02e3e996b09e4363f4ba1aa4efdf0c11a6bfca5ebbe0cd328390bec`
+- 크기: 10,653,085바이트
+- SHA-256: `361e432ff7615609d7f1001950673420b2671537517dc8725d397ac3eb4fda46`
 - ZIP 무결성 검사: PASS
+- 최상위 구성: `README.md`, `Data Files`, `OpenMW Config`, `SHA256SUMS.txt`
 - 설치 방식: 압축 안의 `Data Files` 폴더를 기존 모로윈드 `Data Files` 폴더에 병합·덮어쓰기
 - Google Drive 배포: 사용하지 않음
 - 자동 설치 스크립트: 포함하지 않음
