@@ -6,8 +6,8 @@ OpenMW 0.51용 모로윈드 본편·Tribunal·Bloodmoon 한국어 재번역입�
 ## 배포 파일
 
 - 파일명: `Morrowind_Korean_ReTranslation_v01.zip`
-- 크기: 10,653,140바이트
-- SHA-256: `9ad0e181f02e3e996b09e4363f4ba1aa4efdf0c11a6bfca5ebbe0cd328390bec`
+- 크기: 10,653,085바이트
+- SHA-256: `361e432ff7615609d7f1001950673420b2671537517dc8725d397ac3eb4fda46`
 - Google Drive에는 배포하지 않습니다.
 
 ## 설치
@@ -46,7 +46,7 @@ fallback=Fonts_Font_1,SmallBatang4
 fallback=Fonts_Font_2,SmallBatang4
 ```
 
-게임 설정 문구 번역을 사용하려면 `OpenMW 설정\openmw.cfg_추가항목.cfg`의 내용을 `openmw.cfg` 끝에 추가합니다.
+게임 설정 문구 번역을 사용하려면 `OpenMW Config\openmw.cfg.append.cfg`의 내용을 `openmw.cfg` 끝에 추가합니다.
 이 파일에는 폰트용 원시 바이트가 포함되어 있으므로 UTF-8로 변환하거나 다시 저장하지 마십시오. 기존에 같은 `fallback=` 항목이 있다면 중복 추가하지 않습니다.
 
 ### settings.cfg
