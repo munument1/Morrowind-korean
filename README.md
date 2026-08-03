@@ -1,6 +1,6 @@
 # 모로윈드 한국어 재번역 v01 핫픽스 1
 
-OpenMW 0.51.0 포터블 구성용 한국어 재번역 배포본입니다.
+OpenMW 0.51.0용 한국어 재번역 간편 설치 배포본입니다.
 
 ## 중요: 이전 단일 ESP 폐기
 
@@ -11,8 +11,8 @@ OpenMW 0.51.0 포터블 구성용 한국어 재번역 배포본입니다.
 ## 배포 파일
 
 - 파일명: `Morrowind_Korean_ReTranslation_v01_hotfix1_easy.zip`
-- 크기: 4,230,726바이트
-- SHA-256: `2d4ff0ad2839f4ea34332f136046bacc248f87e7f16be176b7c1bba9a8b6d5f9`
+- 크기: 4,235,750바이트
+- SHA-256: `0acde971a4b4399efcf2f5d78acdaa243660e0d9152f31c7a01a04a09491fac4`
 - Google Drive에는 배포하지 않습니다.
 
 ## 설치
@@ -25,6 +25,7 @@ OpenMW 0.51.0 포터블 구성용 한국어 재번역 배포본입니다.
 ```text
 OpenMW 0.51.0
 ├─ openmw.cfg
+├─ SHA256SUMS.txt
 └─ mods
    └─ Morrowind_Korean_ReTranslation_v01
       ├─ Morrowind_Korean_ReTranslation_v01.esp
@@ -38,24 +39,18 @@ OpenMW 0.51.0
 
 ## openmw.cfg 구성
 
-동봉된 `openmw.cfg`는 `OpenMW 0.51.0` 폴더 안에 다음 구조가 있는 포터블 구성을 기준으로 합니다.
+동봉된 `openmw.cfg`는 사용자가 제공한 OpenMW 0.51.0 기본 설정 파일 521줄 전체를 기반으로 만들었습니다. 조명·날씨·물·캐릭터 생성 등 원래 설정은 유지하고 다음 항목만 반영했습니다.
 
-```text
-resources\vfs-mw
-mods\Morrowind_Korean_ReTranslation_v01
-```
-
-설정에는 다음 내용이 포함되어 있습니다.
-
-- `resources=./resources`
-- `data=./resources/vfs-mw`
 - `data=./mods/Morrowind_Korean_ReTranslation_v01`
+- `encoding=win1252`
 - `Morrowind.esm`, `Tribunal.esm`, `Bloodmoon.esm`
 - `Morrowind_Korean_ReTranslation_v01.esp`
-- SmallBatang4 폰트 설정
+- SmallBatang4 폰트 3개 항목
 - 한국어 fallback 문자열 63개
 
-기존 `openmw.cfg`에 다른 모드를 직접 등록했다면 덮어쓰기 전에 백업하십시오. 이 배포본의 `openmw.cfg`는 공식 ESM 3개와 한국어 패치만 등록합니다. `settings.cfg`는 덮어쓰지 않습니다.
+수정된 설정 파일은 529줄, 30,121바이트이며 SHA-256은 `7dac219722ef79a7a135e61370bdb58b7fc4fae2409f693797e52c855f6a6893`입니다.
+
+기존 `openmw.cfg`에 다른 모드나 사용자 설정을 직접 추가해 두었다면 덮어쓰기 전에 백업하십시오. `settings.cfg`는 덮어쓰지 않습니다.
 
 ## 포함 내용
 
