@@ -1,0 +1,12 @@
+{
+  "version": "v1.0.5",
+  "asset": "Morrowind_Korean_ReTranslation_v1.0.5_OpenMW_0.51.0_cfgfree_readable_font.zip",
+  "size_bytes": 4297696,
+  "sha256": "448bc35976b9757e3e8fdfd5a202100459fc72f7255252ec9bc75df79f3f291b",
+  "openmw_cfg_included": false,
+  "esp_filename": "Morrowind_Korean_ReTranslation_v1.0.4.esp",
+  "cell_records": 0,
+  "pgrd_records": 0,
+  "font_aliases": ["MysticCards", "DejaVuLGCSansMono", "DemonicLetters"],
+  "final_advance_px": 12
+}
