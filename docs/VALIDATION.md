@@ -1,72 +1,71 @@
 # 검증 결과
 
-## 핫픽스 1 상태
+## v1.0.7-rc6 상태
 
-- 상태: PASS
-- 이전 단일 통합 ESP: `BROKEN_RETIRED`
-- 확인된 오류: 실내 지명 패치의 `CELL` 내부 `FRMR` 참조 번호가 원본 ESM 마스터 인덱스로 재매핑되지 않아 NPC와 캐릭터 생성 오브젝트가 복제됨
-- 관찰 증상: 시작 부두 경비병 중복, 인구조사 절차 전 직업 선택 장면 실행
+- 상태: `RC_PASS_WINDOWS_SAFE_MRK`
+- 대상: OpenMW 0.51.0
+- GitHub Pre-release: `v1.0.7-rc6`
+- 배포 ZIP: `Morrowind_Korean_ReTranslation_v1.0.7-rc6_OpenMW_0.51.0_MRK_WINDOWS_SAFE.zip`
+- GitHub asset SHA-256: `ad9320ccc13a314f42de7a1c2928703a44bf28614744ce3ebf3ba65427e7ebc6`
 
-## 핫픽스 ESP
+## 게임플레이 payload
 
-- 파일: `Morrowind_Korean_ReTranslation_v01.esp`
-- 크기: 18,184,467바이트
-- SHA-256: `52f973e173c037a1010a4fb91aec45a3946db6390c7e516eab96a9be629bc715`
-- 전체 레코드: 45,956개
-- `CELL` 레코드: 126개
-- `chargen` 문자열이 포함된 `CELL` 레코드: 0개
-- 번역 행: 45,881 / 45,881
-- 누락: 0
-- 텍스트 불일치: 0
-- 검증된 스크립트 문자열: 3,714개
+- ESP: `Morrowind_Korean_ReTranslation.esp`
+- ESP SHA-256: `26da6c578d7136eb0e12f63d4e2d326cef2c10d7e4a148684c65136f753052e2`
+- MRK: `Morrowind_Korean_ReTranslation.mrk`
+- MRK SHA-256: `030bb6acb37f1d5718d0af7c4c49367f596dc95e7f75805113a5707bb69b675f`
+- MRK entries: 373
+- MRK byte `0x1A`: 0
+- stale MRK keyword: 0
+- duplicate MRK topic key: 0
+- duplicate MRK keyword value: 0
 
-## 실내 지명
+## RC6에서 닫은 런타임 문제
 
-- 검수 완료: 1,328개
-- 핫픽스 포함: 0개
-- 상태: 임시 제외
-- 제외 이유: 기존 빌드가 전체 `CELL` 레코드를 복사하면서 참조 번호를 로컬 신규 참조로 만들었음
-- 복원 조건: 원본 ESM별 `FRMR` 마스터 인덱스 재매핑, 중복 참조 검사, 시작 구간 실제 게임 시험
+### Windows MRK EOF
 
-## openmw.cfg
+OpenMW 0.51은 `.mrk/.top/.cel` 번역 sidecar를 `std::ifstream`으로 읽습니다. 한국어 레거시 인코딩에서 실제 글자 구성에 쓰이는 바이트 `0x1A`가 Windows 텍스트 모드에서 EOF처럼 작동할 수 있어 기존 MRK의 뒤쪽 항목이 로드되지 않는 현상을 실게임에서 확인했습니다.
 
-- 기반 파일: 사용자가 제공한 OpenMW 0.51.0 기본 `openmw.cfg`
-- 기반 파일 크기: 29,386바이트
-- 기반 파일 줄 수: 521줄
-- 기반 파일 SHA-256: `eefb940803c533b17a6899d951d7b3b58e9758fce9d4f8a5d42b72a9f07b772a`
-- 배포 수정본 크기: 30,121바이트
-- 배포 수정본 줄 수: 529줄
-- 배포 수정본 SHA-256: `7dac219722ef79a7a135e61370bdb58b7fc4fae2409f693797e52c855f6a6893`
-- 원본 설정 보존: PASS
-- 한국어 모드 데이터 경로: 1개
-- `encoding=win1252`: 1개
-- 콘텐츠 로드 항목: 4개
-- 폰트 교체 항목: 3개
-- 한국어 fallback 교체 항목: 63개
-- 중복 패키지 지시문: 0개
+RC6에서는 MRK 안의 `0x1A`를 0개로 만들었습니다. `0x1A`가 들어가던 13개 토픽은 MRK에서 제거하고 관련 응답문에 실제 한국어 DIAL명이 직접 나타나도록 복구했습니다.
 
-## OpenMW 자산
+### stale MRK override
 
-- 상태: PASS
-- l10n 영역: 8개
-- 네이티브 UI 키: 456개
-- fallback 문자열: 63개
-- Interface 키: No=아니요; Off=끔; On=켬; Yes=예
-- 폰트 패치: PASS
+RC5에서 `파고스의 은닉처`를 `파르고스의 은닉처`로 고친 뒤에도 MRK에는 이전 철자의 keyword override가 남아 있었습니다. RC6에서는 이 override를 제거하여 OpenMW가 현재 DIAL 문자열 자체를 keyword로 사용하도록 했습니다.
 
-## 간편 설치 ZIP
+## 실게임 확인
 
-- 파일: `Morrowind_Korean_ReTranslation_v01_hotfix1_easy.zip`
-- 크기: 4,235,750바이트
-- SHA-256: `0acde971a4b4399efcf2f5d78acdaa243660e0d9152f31c7a01a04a09491fac4`
-- ZIP 파일 수: 18개
-- ZIP 무결성 검사: PASS
-- 내부 SHA256SUMS 검사: PASS
-- 최상위 폴더: `OpenMW 0.51.0` 하나
-- 구형 `OpenMW Config` 폴더: 없음
-- 설치 방식: `OpenMW 0.51.0` 폴더 전체 덮어쓰기
-- Google Drive 배포: 사용하지 않음
+- 흐리스카르 `금화 되찾기`: 링크 정상
+- 흐리스카르 `파르고스의 은닉처`: 링크 정상
+- `파르고스의 은닉처` 선택 후 Choice 표시: 정상
+- 타베레 베드라노 `그가 화내는` → `그가 화내는 걸 봤다`: 링크 정상
 
-## 제한 사항
+## 구조 검증
 
-현재 작업 환경에는 OpenMW 실행 파일이 없어 실제 게임 실행 시험은 수행하지 못했습니다. 대신 문제가 발생한 `CELL` 참조가 핫픽스 ESP에 포함되지 않았는지 구조적으로 검사했으며, 시작 이벤트 관련 `chargen` 참조가 포함된 `CELL` 레코드는 0개입니다.
+- RC4 이후 변경 범위: INFO 응답 `NAME` 29개 + MRK 정리
+- 기술 서브레코드 변경: 없음
+- 레코드 수 변경: 없음
+- `CELL` 레코드: 0
+- `PGRD` 레코드: 0
+- `.top`: 없음
+- 구형 `@ + 0x7F + #` 링크: 없음
+- 대량 result-script `AddTopic` 주입: 없음
+- 기존 compiled SCPT topic-fix 유지
+
+## 누적 v1.0.7 복구
+
+- INFO 식별 기준을 전역 INAM에서 `(부모 DIAL, INFO INAM)` 문맥으로 수정
+- 기존 INFO ID 충돌 누락 66개 복구 유지
+- 원본 3개 마스터 대조 Topic/Persuasion 누락 INFO 153개 복구 유지
+- compiled MWScript의 낡은 영문 `AddTopic` 참조 16개 수정 유지
+- 프로케수스 살해 토픽 경로 수정 및 잘못 번역된 기술용 ANAM 중복 INFO 제거 유지
+- 자동 보류 토픽 36개 수동 검수 완료 상태 유지
+
+## 재현성
+
+`release/rebuild_rc6.py`는 RC6 GitHub Pre-release를 생성할 때 실제로 사용한 재구축 스크립트입니다. 입력 RC4 ZIP의 SHA-256을 확인한 뒤 패치를 적용하고, ESP/MRK의 예상 SHA-256 및 MRK의 `0x1A` 부재를 검증합니다.
+
+관련 메타데이터는 `release/manifest-v1.0.7-rc6.json`, 체크섬은 `release/SHA256SUMS_v1.0.7-rc6.txt`에 기록합니다.
+
+## 남은 상태
+
+RC6는 정식 stable이 아니라 pre-release입니다. 현재 제보된 세이다 닌 초반 토픽 경로는 실게임에서 확인했지만, 전체 게임의 모든 NPC/퀘스트 분기를 플레이한 것은 아닙니다. 추가 누락이 발견되면 NPC, 화면에 나온 대사, 기대한 토픽 이름을 기준으로 재현합니다.
