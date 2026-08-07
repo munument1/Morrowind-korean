@@ -1,0 +1,23 @@
+From: Morrowind Korean Translation project
+Subject: [PATCH] Fix Windows Ctrl-Z truncation in translation sidecars
+
+OpenMW loads .cel, .top and .mrk translation sidecars through std::ifstream
+without std::ios::binary. On the Microsoft C runtime, text mode interprets
+CTRL+Z (0x1A) as end-of-file. Legacy multibyte encodings can legitimately
+contain 0x1A inside character data, which truncates the sidecar and silently
+loses all mappings after that byte.
+
+Open the sidecar in binary mode. loadDataFromStream() already strips a
+trailing '\r' after getline(), so CRLF input remains handled correctly.
+
+--- a/components/translation/translation.cpp
++++ b/components/translation/translation.cpp
+@@ -30,7 +30,7 @@ namespace Translation
+         const Files::MultiDirCollection& collection = dataFileCollections.getCollection(extension);
+         if (collection.doesExist(fileName))
+         {
+-            std::ifstream stream(collection.getPath(fileName));
++            std::ifstream stream(collection.getPath(fileName), std::ios::binary);
+ 
+             if (!stream.is_open())
+                 throw std::runtime_error("failed to open translation file: " + fileName);
