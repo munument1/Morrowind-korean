@@ -48,10 +48,12 @@ OpenMW 0.51용 한국어 재번역의 대화 토픽 연결 수정 후보판입�
 - 구형 `@ + 0x7F + #` 링크 없음
 - 대량 result-script `AddTopic` 주입 없음
 
-## 재현용 소스
+## 재현용 소스 / upstream 패치
 
 - `release/rebuild_rc6.py`: RC4 검증 ZIP에서 RC6 게임플레이 payload를 재구축하고 해시/구조를 검증하는 스크립트
 - `release/manifest-v1.0.7-rc6.json`: RC6 입력/출력과 해시 기록
 - `release/SHA256SUMS_v1.0.7-rc6.txt`: RC6 핵심 파일 체크섬
+- `patches/openmw-translation-sidecar-binary-mode.patch`: OpenMW가 `.cel/.top/.mrk`를 Windows text mode가 아닌 binary mode로 열도록 하는 upstream 소스 수정안
+- `docs/OPENMW_TRANSLATION_SIDECAR_CTRLZ.md`: `0x1A` EOF 문제의 재현·원인·회귀 테스트 제안
 
 자세한 내용은 `release/RELEASE_NOTES_v1.0.7-rc6.md`와 `docs/VALIDATION.md`를 확인하세요.
