@@ -1,5 +1,18 @@
 # 변경 기록
 
+## v1.0.7-rc4 — 토픽 연결 수동 검수 완료 후보판 — 2026-08-07
+
+- INFO를 `(부모 DIAL, INFO INAM)` 문맥으로 식별하여 기존 INFO ID 충돌 누락 66개 복구를 유지했습니다.
+- 원본 `Morrowind.esm`, `Tribunal.esm`, `Bloodmoon.esm`과 다시 대조하여 Topic/Persuasion 누락 INFO 153개를 추가 복구하고 한국어화했습니다.
+- compiled MWScript의 영문 `AddTopic` 참조 16개를 직접 수정했습니다.
+- 흐리스카르 `금화 되찾기`와 프로케수스 살해 토픽 경로를 복구했습니다.
+- 프로케수스 살해 INFO의 잘못 번역된 기술용 `ANAM` 중복 레코드 1쌍을 제거했습니다.
+- OpenMW 0.51 `.mrk`를 이용해 안전한 implicit topic keyword만 복구했습니다.
+- 자동 보류했던 토픽 36개를 전부 수동 검수하여 미결 0으로 정리했습니다.
+- 전체 대사 재검증에서 새 false-positive topic edge 0, 기존 정상 edge 손실 0을 확인했습니다.
+- 잘려 있던 `One destiny`, `Sixth trial`, `skin of the pearl` 응답을 원문 기준으로 복원했습니다.
+- `CELL=0`, `PGRD=0`, `.top` 없음, 구형 `@ + 0x7F + #` 링크 없음 상태를 유지합니다.
+
 ## v1.0.5 — cfg 없는 가독성 폰트판 — 2026-08-05
 
 - `openmw.cfg`를 포함하거나 덮어쓰는 배포 방식을 폐기했습니다.
