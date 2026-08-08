@@ -1,0 +1,56 @@
+{
+  "version": "v1.0.7-rc7",
+  "target": "OpenMW 0.51.0",
+  "status": "pre-release",
+  "release_url": "https://github.com/munument1/OpenMW-korean/releases/tag/v1.0.7-rc7",
+  "asset": {
+    "name": "Morrowind_Korean_ReTranslation_v1.0.7-rc7_OpenMW_0.51.0_IMPORT_FONT_ALIAS_FIX.zip",
+    "sha256": "7337db136de43aff64449fee6307d211cf5f327d9aff0ee7dbd10ce9b274226b"
+  },
+  "payload": {
+    "esp": {
+      "name": "Morrowind_Korean_ReTranslation.esp",
+      "sha256": "26da6c578d7136eb0e12f63d4e2d326cef2c10d7e4a148684c65136f753052e2",
+      "unchanged_from": "v1.0.7-rc6"
+    },
+    "mrk": {
+      "name": "Morrowind_Korean_ReTranslation.mrk",
+      "sha256": "030bb6acb37f1d5718d0af7c4c49367f596dc95e7f75805113a5707bb69b675f",
+      "entries": 373,
+      "ctrl_z_0x1a_count": 0,
+      "stale_keyword_count": 0,
+      "unchanged_from": "v1.0.7-rc6"
+    }
+  },
+  "fonts": {
+    "default_openmw_names": ["MysticCards", "DemonicLetters"],
+    "morrowind_import_names": ["magic_cards_regular", "daedric_font"],
+    "aliases": [
+      {
+        "file": "magic_cards_regular.fnt",
+        "source": "MysticCards.fnt",
+        "sha256": "f4a361c752f937beccdfff013d65901797f3d2929f74440d4079df85629ecfcd",
+        "internal_texture": "MysticCards.tex",
+        "byte_identical": true
+      },
+      {
+        "file": "daedric_font.fnt",
+        "source": "DemonicLetters.fnt",
+        "sha256": "ee7ab5662eedf4cab7bdedf86e9bf5066ad5de36e2d9efed9910dec1cfdfefa2",
+        "internal_texture": "DemonicLetters.tex",
+        "byte_identical": true
+      }
+    ],
+    "user_cfg_edit_required": false
+  },
+  "build": {
+    "source_rc6": "release/rebuild_rc6.py",
+    "source_rc7": "release/rebuild_rc7.py",
+    "base_release": "v1.0.7-rc4"
+  },
+  "runtime_verified_from_rc6": [
+    "Hrisskar: 금화 되찾기 link",
+    "Hrisskar: 파르고스의 은닉처 link and Choice flow",
+    "Tavere Vedrano: 그가 화내는 -> 그가 화내는 걸 봤다 link"
+  ]
+}
