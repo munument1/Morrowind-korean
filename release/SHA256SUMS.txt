@@ -1,1 +1,1 @@
-ad9320ccc13a314f42de7a1c2928703a44bf28614744ce3ebf3ba65427e7ebc6  Morrowind_Korean_ReTranslation_v1.0.7-rc6_OpenMW_0.51.0_MRK_WINDOWS_SAFE.zip
+7337db136de43aff64449fee6307d211cf5f327d9aff0ee7dbd10ce9b274226b  Morrowind_Korean_ReTranslation_v1.0.7-rc7_OpenMW_0.51.0_IMPORT_FONT_ALIAS_FIX.zip
