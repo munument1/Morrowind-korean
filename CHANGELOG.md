@@ -1,5 +1,15 @@
 # 변경 기록
 
+## v1.0.7-rc7 — Import Wizard 폰트 이름 호환 후보판 — 2026-08-08
+
+- RC6의 ESP/MRK 게임플레이 payload는 바이트 단위로 유지했습니다.
+- 정상적인 OpenMW 기본 설정의 `MysticCards` / `DemonicLetters` 폰트 이름을 계속 지원합니다.
+- Morrowind.ini 또는 Import Wizard가 사용자 `openmw.cfg`에 남기는 `magic_cards_regular` / `daedric_font` 이름도 지원하도록 FNT 호환 별칭을 추가했습니다.
+- `magic_cards_regular.fnt`는 `MysticCards.fnt`의 바이트 단위 복사본이며 내부 TEX 참조는 `MysticCards.tex`를 유지합니다.
+- `daedric_font.fnt`는 `DemonicLetters.fnt`의 바이트 단위 복사본이며 내부 TEX 참조는 `DemonicLetters.tex`를 유지합니다.
+- 사용자가 `Fonts_Font_0` / `Fonts_Font_2`를 수동으로 변경하지 않아도 OpenMW 기본 설치와 Morrowind Import Wizard 설치를 모두 지원하도록 패키징했습니다.
+- RC7 재구축과 검증 절차를 `release/rebuild_rc7.py`로 저장소에 보존했습니다.
+
 ## v1.0.7-rc6 — Windows MRK 안전화 / 런타임 토픽 복구 후보판 — 2026-08-08
 
 - OpenMW 0.51의 번역 sidecar가 Windows 텍스트 모드로 읽힐 때 한국어 레거시 인코딩의 `0x1A`가 EOF처럼 작동할 수 있는 문제를 실게임에서 확인했습니다.
@@ -65,7 +75,6 @@
 - 게임 내 번역 45,881행을 재빌드하고 검증했습니다.
 - 스크립트 정규화 과정에서 선택지와 메시지 상자 문법이 깨지지 않도록 수정했습니다.
 - 실내 지명 1,328개와 관련 참조를 검수했습니다.
-- OpenMW 0.51 네이티브 UI 문자열 456개를 8개 l10n 영역에 추가했습니다.
-- `openmw.cfg`용 번역 fallback 문자열 63개를 추가했습니다.
+- OpenMW UI 456개, fallback 63개, SmallBatang4 폰트는 유지했습니다.
 - YAML 1.1 불리언으로 오인되는 `No`, `Off`, `On`, `Yes` 키를 문자열 키로 복원했습니다.
 - ㅎ 표시를 보정한 SmallBatang4 비트맵 폰트를 추가했습니다.
